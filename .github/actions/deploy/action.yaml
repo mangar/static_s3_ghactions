@@ -1,0 +1,18 @@
+name: 'Deploy Action'
+description: 'actions/deploy'
+
+runs:
+  using: 'composite'
+  steps:
+
+    - name: Deploy to S3
+      run: aws s3 sync ./public s3://$aws_bucket_name
+      shell: bash
+      env:
+        aws_bucket_name: ${{ env.AWS_BUCKET_NAME }}
+        aws_access_key: ${{ env.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+        aws_default_region: ${{ env.AWS_DEFAULT_REGION }}        
+
+
+

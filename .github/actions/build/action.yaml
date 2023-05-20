@@ -1,0 +1,14 @@
+name: 'Build Action'
+description: 'actions/build'
+
+runs:
+  using: 'composite'
+  steps:
+
+    - name: Setup Hugo
+      run: sudo snap install hugo
+      shell: bash
+
+    - name: Build
+      run: hugo --minify
+      shell: bash
